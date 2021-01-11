@@ -4,6 +4,7 @@
 
 - pycharm community
 - anaconda 3
+- PostgreSQL 9.6 & pgAdmin 4.x
 
 ## Create conda environment from environment file.
 
