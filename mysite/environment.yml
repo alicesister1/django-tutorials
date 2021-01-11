@@ -1,0 +1,8 @@
+name: django
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - django
+prefix: D:\work\env\anaconda3\envs\django
