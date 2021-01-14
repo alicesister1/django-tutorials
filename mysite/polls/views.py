@@ -1,4 +1,5 @@
 # Create your views here.
+from django.db.models import F
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
@@ -36,7 +37,8 @@ def vote(request, question_id):
             'error_message': "You didn't select a choice",
         })
     else:
-        selected_choice.votes += 1
+        # https://docs.djangoproject.com/ko/3.1/ref/models/expressions/#f-expressions
+        selected_choice.votes = F('votes') + 1
         selected_choice.save()
         # 뒤로가기 눌렀을 때 같은 폼이 두번 제출되는 경우 방지를 위해
         # POST가 성공적으로 끝난 후 항상 HttpResponseRedirect를 반환
