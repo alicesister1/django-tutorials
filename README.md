@@ -33,3 +33,18 @@ http://localhost:8000 또는 http://localhost:8000/admin 접속
 # python manage.py test <app-name> 
 $ python manage.py test polls
 ```
+
+## 모델 활성화
+
+```shell
+# 모델 변경사항과 migration 변경사항을 <app-name>/migrations/ 폴더에 저장
+# python manage.py makemigrations <app-name>
+$ python manage.py makemigrations polls
+
+# migration이 어떤 SQL 문장을 실행하는지 확인
+$ python manage.py sqlmigrate polls 0001
+
+# 적용되지 않은 migration들을 실행하고 자동으로 db 스키마를 관리
+# 이 과정을 통해 모델에서의 변경 사항들과 데이터베이스의 스키마의 동기화가 이루어짐
+$ python manage.py migrate
+```
