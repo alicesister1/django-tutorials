@@ -34,6 +34,17 @@ http://localhost:8000 또는 http://localhost:8000/admin 접속
 $ python manage.py test polls
 ```
 
+## Code Coverage 확인
+
+```shell
+$ pip install coverage
+
+# coverage run --source='.' manage.py test <app-name>
+$ coverage run --source='.' manage.py test polls
+
+$ coverage report
+```
+
 ## 모델 활성화
 
 ```shell
