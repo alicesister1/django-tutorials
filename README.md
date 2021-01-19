@@ -29,31 +29,7 @@ http://localhost:8000 또는 http://localhost:8000/admin 접속
 
 ## Test!!!
 
-### Test back-end applications
-
 ```shell
 # python manage.py test <app-name> 
 $ python manage.py test polls
-```
-
-## Test client-side
-
-> 장고는 뷰 레벨에서 코드와 상호 작용하는 사용자를 시뮬레이션 하기 위한 테스트 클래스 Client 제공
-
-```shell
-$ python manage.py shell
-```
-
-```shell
->>> from django.test.utils import setup_test_environment
->>> setup_test_environment()
->>> from django.test import Client
->>> client = Client()
->>> response = client.get('/')
->>> response.status_code
->>> from django.urls import reverse
->>> response = client.get(reverse('polls:index'))
->>> response.status_code
->>> response.content
->>> response.context['latest_question_list']
 ```
