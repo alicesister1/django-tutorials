@@ -26,3 +26,12 @@ python manage.py runserver 0:8000
 ```
 
 http://localhost:8000 또는 http://localhost:8000/admin 접속
+
+## Test!!!
+
+### Test back-end applications
+
+```shell
+# python manage.py test <app-name> 
+python manage.py test polls
+```
