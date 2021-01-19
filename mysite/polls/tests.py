@@ -102,7 +102,30 @@ class QuestionDetailViewTests(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_past_question(self):
+        """
+        pub_date 가 과거시점인 질문의 상세보기는 질문의 내용이 담겨있다.
+        """
         past_question = create_question(question_text="Past Question.", days=-5)
         url = reverse('polls:detail', args=(past_question.id,))
+        response = self.client.get(url)
+        self.assertContains(response, past_question.question_text)
+
+
+class QuestionResultViewTests(TestCase):
+    def test_future_question(self):
+        """
+        pub_date 가 미래시점인 질문의 결과는 404 를 반환한다.
+        """
+        future_question = create_question(question_text="No choice question.", days=5)
+        url = reverse('polls:results', args=(future_question.id,))
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 404)
+
+    def test_past_question(self):
+        """
+        pub_date 가 과거시점인 질문의 결과는 질문의 내용이 담겨있다.
+        """
+        past_question = create_question(question_text="Past Question", days=-30)
+        url = reverse('polls:results', args=(past_question.id,))
         response = self.client.get(url)
         self.assertContains(response, past_question.question_text)

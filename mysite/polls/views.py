@@ -37,6 +37,12 @@ class ResultView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
 
+    def get_queryset(self):
+        """
+        아직 게재 시점이 아닌 질문은 제외한다.
+        """
+        return Question.objects.filter(pub_date__lte=timezone.now())
+
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
