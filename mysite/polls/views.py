@@ -3,6 +3,7 @@ from django.db.models import F
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
+from django.utils import timezone
 from django.views import generic
 
 from .models import Question, Choice
@@ -13,8 +14,12 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
-        """return the last five published question."""
-        return Question.objects.order_by('-pub_date')[:5]
+        """
+        pub_date 가 현재보다 작거나 같은 질문 중 최근 5개만 반환한다.
+        """
+        return Question.objects.filter(
+            pub_date__lte=timezone.now()
+        ).order_by('-pub_date')[:5]
 
 
 class DetailView(generic.DetailView):
