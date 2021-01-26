@@ -3,6 +3,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.8
   - django
-prefix: D:\work\env\anaconda3\envs\django
+  - python=3.8
+  - psycopg2
+prefix: /home/ykh/anaconda3/envs/django
